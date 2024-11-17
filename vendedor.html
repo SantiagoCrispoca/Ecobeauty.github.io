@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Vendedor - Ecobeauty</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+    <header>
+        <h1>Perfil del Vendedor</h1>
+        <a href="index.html">Volver a la página principal</a>
+    </header>
+
+    <section id="tus-productos">
+        <h2>Tus Productos</h2>
+        <div class="productos">
+            <!-- Producto 1 -->
+            <div class="vendedor-producto">
+                <img src="images/basenatural.jpeg" alt="Base Natural">
+                <p>Base Natural</p>
+                <p>Precio: $29.99</p>
+                <button onclick="abrirModal('modal-detalles-basenatural'); cargarDatos('basenatural')">Ver detalles</button>
+            </div>
+            <!-- Producto 2 -->
+            <div class="vendedor-producto">
+                <img src="images/rimelecologico.jpeg" alt="Rímel Ecológico">
+                <p>Rímel Ecológico</p>
+                <p>Precio: $19.99</p>
+                <button onclick="abrirModal('modal-detalles-rimelecologico')">Ver detalles</button>
+            </div>
+            <!-- Producto 3 -->
+            <div class="vendedor-producto">
+                <img src="images/labialvegano.jpeg" alt="Labial Vegano">
+                <p>Labial Vegano</p>
+                <p>Precio: $15.99</p>
+                <button onclick="abrirModal('modal-detalles-labialvegano')">Ver detalles</button>
+            </div>
+            <!-- Producto 4 -->
+            <div class="vendedor-producto">
+                <img src="images/polvosuelto.jpeg" alt="Polvo Suelto">
+                <p>Polvo Suelto</p>
+                <p>Precio: $24.99</p>
+                <button onclick="abrirModal('modal-detalles-polvosuelto')">Ver detalles</button>
+            </div>
+            <!-- Producto 5 -->
+            <div class="vendedor-producto">
+                <img src="images/sombrarecargable.jpeg" alt="Sombra Recargable">
+                <p>Sombra Recargable</p>
+                <p>Precio: $9.99</p>
+                <button onclick="abrirModal('modal-detalles-sombrarecargable')">Ver detalles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modales para los productos -->
+        <!-- Modal Base Natural -->
+        <div class="modal oculto" id="modal-detalles-basenatural">
+            <div class="modal-contenido">
+                <button class="modal-cerrar" onclick="cerrarModal('modal-detalles-basenatural')">X</button>
+                <h2>Base Natural</h2>
+                <label>Nombre:</label>
+                <input type="text" id="nombre-basenatural" value="Base Natural">
+                <label>Imagen:</label>
+                <input type="file" id="imagen-basenatural">
+                <label>Precio:</label>
+                <input type="number" id="precio-base" value="29.99" min="0" step="0.01">
+                <label>Cantidad Disponible:</label>
+                <input type="number" id="cantidad-basenatural" value="100" min="0">
+                <label>Detalles:</label>
+                <textarea id="detalles-basenatural">Base orgánica, 30ml.</textarea>
+                <button onclick="guardarCambios('basenatural')">Guardar cambios</button>
+            </div>
+        </div>
+
+        <!-- Modal Rímel Ecológico -->
+        <div class="modal oculto" id="modal-detalles-rimelecologico">
+            <div class="modal-contenido">
+                <button class="modal-cerrar" onclick="cerrarModal('modal-detalles-rimelecologico')">X</button>
+                <h2>Rímel Ecológico</h2>
+                <label>Nombre:</label>
+                <input type="text" id="nombre-rimelecologico" value="Rímel Ecológico">
+                <label>Imagen:</label>
+                <input type="file" id="imagen-rimelecologico">
+                <label>Precio:</label>
+                <input type="number" id="precio-rimelecologico" value="19.99" min="0" step="0.01">
+                <label>Cantidad Disponible:</label>
+                <input type="number" id="cantidad-rimelecologico" value="50" min="0">
+                <label>Detalles:</label>
+                <textarea id="detalles-rimelecologico">Rímel biodegradable, 10ml.</textarea>
+                <button onclick="guardarCambios('rimelecologico')">Guardar cambios</button>
+            </div>
+        </div>
+
+        <!-- Modal Labial Vegano -->
+        <div class="modal oculto" id="modal-detalles-labialvegano">
+            <div class="modal-contenido">
+                <button class="modal-cerrar" onclick="cerrarModal('modal-detalles-labialvegano')">X</button>
+                <h2>Labial Vegano</h2>
+                <label>Nombre:</label>
+                <input type="text" id="nombre-labialvegano" value="Labial Vegano">
+                <label>Imagen:</label>
+                <input type="file" id="imagen-labialvegano">
+                <label>Precio:</label>
+                <input type="number" id="precio-labialvegano" value="22.99" min="0" step="0.01">
+                <label>Cantidad Disponible:</label>
+                <input type="number" id="cantidad-labialvegano" value="15" min="0">
+                <label>Detalles:</label>
+                <textarea id="detalles-labialvegano">Labial Vegano.</textarea>
+                <button onclick="guardarCambios('labialvegano')">Guardar cambios</button>
+            </div>
+        </div>
+
+        <!-- Modal Polvo Suelto -->
+        <div class="modal oculto" id="modal-detalles-polvosuelto">
+            <div class="modal-contenido">
+                <button class="modal-cerrar" onclick="cerrarModal('modal-detalles-polvosuelto')">X</button>
+                <h2>Polvo Suelto</h2>
+                <label>Nombre:</label>
+                <input type="text" id="nombre-polvosuelto" value="Polvo Suelto">
+                <label>Imagen:</label>
+                <input type="file" id="imagen-polvosuelto">
+                <label>Precio:</label>
+                <input type="number" id="precio-polvosuelto" value="50" min="0" step="0.01">
+                <label>Cantidad Disponible:</label>
+                <input type="number" id="cantidad-polvosuelto" value="25" min="0">
+                <label>Detalles:</label>
+                <textarea id="detalles-polvosuelto">Polvo Suelto.</textarea>
+                <button onclick="guardarCambios('polvosuelto')">Guardar cambios</>
+            </div>
+        </div>
+
+        <!-- Modal Sombra Recargable -->
+        <div class="modal oculto" id="modal-detalles-sombrarecargable">
+            <div class="modal-contenido">
+                <button class="modal-cerrar" onclick="cerrarModal('modal-detalles-sombrarecargable')">X</button>
+                <h2>Sombra Recargable</h2>
+                <label>Nombre:</label>
+                <input type="text" id="nombre-sombrarecargable" value="Sombra Recargable">
+                <label>Imagen:</label>
+                <input type="file" id="imagen-sombrarecargable">
+                <label>Precio:</label>
+                <input type="number" id="precio-sombrarecargable" value="35" min="0" step="0.01">
+                <label>Cantidad Disponible:</label>
+                <input type="number" id="cantidad-sombrarecargable" value="28" min="0">
+                <label>Detalles:</label>
+                <textarea id="detalles-sombrarecargable">Sombra recargable.</textarea>
+                <button onclick="guardarCambios('sombrarecargable')">Guardar cambios</button>
+            </div>
+        </div>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
+
+

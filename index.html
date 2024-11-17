@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecobeauty - Maquillaje Amigable con el Medio Ambiente</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Enlace al archivo CSS -->
+    <script src="js/main.js" defer></script> <!-- Enlace al archivo JavaScript -->
+</head>
+<body>
+    <header>
+        <h1 id="titulo-pagina">Ecobeauty</h1>
+        <nav>
+            <ul>
+                <li><a href="vendedor.html" class="btn-perfil-vendedor">Perfil Vendedor</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><button onclick="abrirModalLogin()">Iniciar Sesión</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Página Principal -->
+        <section id="pagina-principal" class="pagina-principal">
+            <a href="#productos-principal" class="btn-ver-productos">Ver Productos</a>
+        </section>
+
+        <!-- Sección de Productos Principal -->
+        <section id="productos-principal">
+            <h2>Productos</h2>
+            <div class="categorias">
+                <button class="categoria" onclick="mostrarCategoria('all')">All</button>
+                <button class="categoria" onclick="mostrarCategoria('brochas')">Brochas</button>
+                <button class="categoria" onclick="mostrarCategoria('cejas')">Cejas</button>
+                <button class="categoria" onclick="mostrarCategoria('ojos')">Ojos</button>
+                <button class="categoria" onclick="mostrarCategoria('labios')">Labios</button>
+                <button class="categoria" onclick="mostrarCategoria('cabello')">Cabello</button>
+                <button class="categoria" onclick="mostrarCategoria('rostro')">Rostro</button>
+            </div>
+            <div class="productos-container">
+                <!-- Todos los Productos -->
+                <div class="producto" data-categoria="all">
+                    <img src="images/pomitos1.jpg" alt="Pomitos ecologicos">
+                    <p>Pomitos ecologicos</p>
+                </div>
+                <div class="producto" data-categoria="brochas">
+                    <img src="images/brochas5.jpg" alt="Set x4 brochas eco">
+                    <p>Set x4 brochas eco</p>
+                </div>
+                <div class="producto" data-categoria="cejas">
+                    <img src="images/cejas5.jpg" alt="Kit de Cejas">
+                    <p>Kit de Cejas</p>
+                </div>
+                <div class="producto" data-categoria="ojos">
+                    <img src="images/ojos5.jpg" alt="Sombra para Ojos">
+                    <p>Sombra para Ojos</p>
+                </div>
+                <div class="producto" data-categoria="labios">
+                    <img src="images/labios5.jpg" alt="Labial Rosado">
+                    <p>Labial Rosado</p>
+                </div>
+                <div class="producto" data-categoria="cabello">
+                    <img src="images/cabello5.jpg" alt="Shampoo y acondicionador ecoo">
+                    <p>Shampoo y acondicionador eco</p>
+                </div>
+                <div class="producto" data-categoria="rostro">
+                    <img src="images/cara5.jpg" alt="Rubor en perlas">
+                    <p>Rubor en perlas</p>
+                </div>
+
+                <!-- Sección Brochas -->
+                <div class="producto" data-categoria="brochas">
+                    <img src="images/brochas1.jpg" alt="Set de 8 brochas cafe">
+                    <p>Set de 8 brochas cafe</p>
+                    
+                </div>
+
+                <div class="producto" data-categoria="brochas">
+                    <img src="images/brochas2.jpg" alt="Brocha Pinchada">
+                    <p>Brocha Pinchada</p>
+                    
+                </div>
+
+                <div class="producto" data-categoria="brochas">
+                    <img src="images/brochas3.jpg" alt="Brocha para Polvo">
+                    <p>Brocha para Polvo</p>
+                    
+                </div>
+
+                <div class="producto" data-categoria="brochas">
+                    <img src="images/brochas4.jpg" alt="Brocha para Rubor">
+                    <p>Brocha para Rubor</p>
+                    
+                </div>
+
+                <!-- Sección Cejas -->
+                <div class="producto" data-categoria="cejas">
+                    <img src="images/cejas1.jpg" alt="Kit de Cejas (cafe)">
+                    <p>Kit de Cejas (cafe)</p>
+                </div>
+                <div class="producto" data-categoria="cejas">
+                    <img src="images/cejas2.jpg" alt="Kit de Cejas (negro)">
+                    <p>Kit de Cejas (negro)</p>
+                </div>
+                <div class="producto" data-categoria="cejas">
+                    <img src="images/cejas3.jpg" alt="Gel para Cejas (negro)">
+                    <p>Gel para Cejas (negro)</p>
+                </div>
+                <div class="producto" data-categoria="cejas">
+                    <img src="images/cejas4.jpg" alt="Gel para Cejas (negro)">
+                    <p>Gel para Cejas (negro)</p>
+                </div>
+
+                <!-- Sección Ojos -->
+                <div class="producto" data-categoria="ojos">
+                    <img src="images/ojos1.jpg" alt="Pestañina eco">
+                    <p>Pestañina eco</p>
+                </div>
+                <div class="producto" data-categoria="ojos">
+                    <img src="images/ojos2.jpg" alt="Pestañina bamboo">
+                    <p>Pestañina bamboo</p>
+                </div>
+                <div class="producto" data-categoria="ojos">
+                    <img src="images/ojos3.jpg" alt="Set de sombras">
+                    <p>Set de sombras</p>
+                </div>
+                <div class="producto" data-categoria="ojos">
+                    <img src="images/ojos4.jpg" alt="Set de sombras">
+                    <p>Set de sombras</p>
+                </div>
+
+                <!-- Sección Labios -->
+                <div class="producto" data-categoria="labios">
+                    <img src="images/labios1.jpg" alt="Labial Rosado">
+                    <p>Labial Rosado</p>
+                </div>
+                <div class="producto" data-categoria="labios">
+                    <img src="images/labios2.jpg" alt="Labial Rojo">
+                    <p>Labial Rojo</p>
+                </div>
+                <div class="producto" data-categoria="labios">
+                    <img src="images/labios3.jpg" alt="Brillo para Labios">
+                    <p>Brillo para Labios</p>
+                </div>
+                <div class="producto" data-categoria="labios">
+                    <img src="images/labios4.jpg" alt="Labial Nude">
+                    <p>Labial Nude</p>
+                </div>
+
+                <!-- Sección Cabello -->
+                <div class="producto" data-categoria="cabello">
+                    <img src="images/cabello1.jpg" alt="Set de baño">
+                    <p>Set de baño</p>
+                </div>
+                <div class="producto" data-categoria="cabello">
+                    <img src="images/cabello2.jpg" alt="Shampoo recargable">
+                    <p>Shampoo recargable</p>
+                </div>
+                <div class="producto" data-categoria="cabello">
+                    <img src="images/cabello3.jpg" alt="Set de baño liquido">
+                    <p>Set de baño liquido</p>
+                </div>
+                <div class="producto" data-categoria="cabello">
+                    <img src="images/cabello4.jpg" alt="Set de baño metal">
+                    <p>Set de baño metal</p>
+                </div>
+
+                <!-- Sección Rostro -->
+                <div class="producto" data-categoria="rostro">
+                    <img src="images/cara1.jpg" alt="Rubor compacto">
+                    <p>Rubor compacto</p>
+                </div>
+                <div class="producto" data-categoria="rostro">
+                    <img src="images/cara2.jpg" alt="Polvo suelto">
+                    <p>Polvo suelto</p>
+                </div>
+                <div class="producto" data-categoria="rostro">
+                    <img src="images/cara3.jpg" alt="Mascarilla eco">
+                    <p>Mascarilla eco</p>
+                </div>
+                <div class="producto" data-categoria="rostro">
+                    <img src="images/cara4.jpg" alt="Base liquida">
+                    <p>Base liquida</p>
+                </div>
+            </div>
+        </section>
+             <!-- Modal de Detalle de Producto -->
+                <div id="modal-producto" class="modal oculto">
+                    <div class="modal-contenido">
+                        <span class="cerrar" onclick="cerrarModal('modal-producto')">&times;</span>
+                        <div class="modal-detalle">
+                            <img id="modal-imagen" src="" alt="Imagen del Producto" class="modal-imagen">
+                            <div class="modal-info">
+                                <h3 id="modal-nombre"></h3>
+                                <p id="modal-precio"></p>
+                                <div class="cantidad">
+                                    <button onclick="modificarCantidad(-1)">-</button>
+                                    <span id="modal-cantidad">1</span>
+                                    <button onclick="modificarCantidad(1)">+</button>
+                                </div>
+                                <!-- Línea 45 - Verificar que este botón esté presente en el modal -->
+                                <button class="btn-agregar" onclick="añadirACesta()">Añadir a la cesta</button>
+<!-- Asegúrate que este botón tenga la función correcta -->
+                                <p id="modal-detalles">Detalles del producto...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ///////////////////// Carrito de Compras //////////////////// -->
+                <!-- Botón para ver el carrito -->
+                <button id="btn-ver-carrito" onclick="abrirVentanaCarrito()" class="btn-carrito">Ver Carrito</button>
+
+                <!-- Modal del Carrito (productos añadidos) -->
+                <div id="modal-carrito-todo" class="modal oculto">
+                    <div class="modal-contenido">
+                        <span class="cerrar" onclick="cerrarVentanaCarrito()">&times;</span>
+                        <h3>Carrito de Compras</h3>
+                        <div id="lista-productos"></div> <!-- Aquí se mostrarán los productos añadidos -->
+                        <div id="carrito-items"></div>
+                        <div id="carrito-total"></div>
+                        <button onclick="cerrarVentanaCarrito()">Cerrar</button>
+                        <button onclick="vaciarCarrito()">Vaciar</button>
+                        <button onclick="abrirVentanaPago()">Pagar</button>
+                    </div>
+                </div>
+                <!-- Modal de Pago -->
+                <div id="modal-pago" class="modal oculto">
+                    <div class="modal-contenido-pago">
+                        <span class="cerrar" onclick="cerrarVentanaPago()">&times;</span>
+                        <div class="pago-info">
+                            <div class="pago-detalles">
+                                <h3>Resumen de Pago</h3>
+                                <p>Subtotal: $<span id="pago-subtotal"></span></p>
+                                <p>Costo de Envío: $5</p>
+                                <p>Total: $<span id="pago-total"></span></p>
+                                <div class="productos-en-pago">
+                                    <h4>Productos en tu Pedido:</h4>
+                                    <div id="productos-pago-lista"></div>
+                                </div>
+                            </div>
+                            <div class="pago-opciones">
+                                <h3>Métodos de Pago</h3>
+                                <button>Nequi</button>
+                                <button>Daviplata</button>
+                                <button>Mastercard</button>
+                                <button>Visa</button>
+                                <h3>Datos Personales</h3>
+                                <input type="text" placeholder="Nombre completo">
+                                <input type="email" placeholder="Correo electrónico">
+                                <input type="direccion" placeholder="Dirección">
+                                <button onclick="procesarPago()">Confirmar Pago</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal de Iniciar Sesión -->
+                <div id="modal-login" class="modal oculto">
+                    <div class="modal-contenido-login">
+                        <span class="cerrar" onclick="cerrarModalLogin()">&times;</span>
+                        <h3>Crear Cuenta</h3>
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre">
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" id="correo">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena">
+                        <button onclick="crearCuenta()">Crear Cuenta</button>
+                    </div>
+                </div>
+
+    </main>
+</body>
+</html>
