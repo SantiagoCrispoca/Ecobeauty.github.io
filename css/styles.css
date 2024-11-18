@@ -1,32 +1,59 @@
 /* --------------------------- Variables CSS --------------------------- */
 :root {
-    --color-fondo: #f4f4f4;
-    --color-principal: #007b5f;
-    --color-secundario: #28a745;
-    --color-texto: #fff;
-    --color-hover: #45a049;
+    --color-fondo: rgba(249,238,210,1); /* Fondo suave */
+    --color-principal: rgba(135,213,166,0.73); /* Color principal */
+    --color-secundario: rgba(84,174,127,0.8); /* Color complementario */
+    --color-texto: #264653; /* Texto oscuro */
+    --color-hover: rgba(101,194,145,0.9); /* Hover */
     --color-borde: #ccc;
     --color-gris: #666;
 }
 
 /* --------------------------- Estilos generales --------------------------- */
 body {
-    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo); /* Fondo */
+    color: var(--color-texto); /* Texto */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: var(--color-fondo);
 }
 
 /* --------------------------- Encabezado --------------------------- */
 header {
     background: var(--color-principal);
-    color: var(--color-texto);
+    color: white;
     padding: 10px 0;
     text-align: center;
 }
 
-h1, h2 {
-    margin: 0;
+h1{
+    margin: 20px;
+    text-align: center;
+    font-size: 3rem;
+}
+
+h2 {
+    margin: 10px;
+    text-align: center;
+}
+
+/* --------------------------- Botones --------------------------- */
+.btn-ver-productos,
+.btn-carrito,
+.btn-agregar {
+    background: var(--color-principal);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-ver-productos:hover,
+.btn-carrito:hover,
+.btn-agregar:hover {
+    background: var(--color-hover);
 }
 
 /* --------------------------- Navegación --------------------------- */
@@ -283,6 +310,284 @@ footer {
     transform: scale(1.05);
 }
 
+.vendedor-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.vendedor-producto img {
+    width: 280px; /* Cambiar a un ancho más pequeño */
+    height: auto; /* Mantener la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen ocupe el espacio sin deformarse */
+}
+
+
+.formulario-nuevo-producto {
+    background-color: rgba(135,213,166,0.7300000190734863); /* Fondo suave */
+    padding: 45px;
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.formulario-nuevo-producto h2 {
+    text-align: center;
+    color: #264653;
+}
+
+.formulario-nuevo-producto label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #264653;
+}
+
+.formulario-nuevo-producto input, 
+.formulario-nuevo-producto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.formulario-nuevo-producto textarea {
+    resize: none;
+    height: 100px;
+}
+
+.formulario-nuevo-producto .btn-agregar-producto {
+    margin-top: 15px;
+    background-color: #264653;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.formulario-nuevo-producto .btn-agregar-producto:hover {
+    background-color: #264653;
+}
+
+.productos-nuevos {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.productos-nuevos h2 {
+    text-align: center;
+    color: #264653;
+}
+
+.productos-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.productos-contenedor .producto {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.productos-contenedor .producto img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.productos-contenedor .producto h3 {
+    margin-top: 10px;
+    color: #2a9d8f;
+}
+
+.productos-contenedor .producto p {
+    margin: 5px 0;
+    color: #264653;
+}
+
+/* --------------------------- Modal de Login --------------------------- */
+.modal-login {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0s, opacity 0.3s ease;
+}
+
+.modal-login.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-login-contenido {
+    background: var(--color-principal);
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal-login h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.modal-login input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.modal-login button {
+    background: white;
+    color: var(--color-principal);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-login button:hover {
+    background: var(--color-hover);
+    color: white;
+}
+
+
+/* Fondo semi-transparente para el modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Animación */
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -60%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+/* Modal de login */
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.formulario-login label {
+    font-weight: bold;
+    color: #264653;
+    margin-bottom: 5px;
+}
+
+.formulario-login input {
+    padding: 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.formulario-login input::placeholder {
+    color: var(--color-gris);
+    font-size: 12px;
+}
+
+.btn-agregar-producto {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agregar-producto:hover {
+    background-color: var(--color-hover);
+}
+
+/* Barra de búsqueda circular */
+.barra-busqueda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 400px;
+    background-color: var(--color-principal);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    padding: 10px 15px;
+}
+
+.barra-busqueda input {
+    flex-grow: 1;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 15px;
+    font-size: 14px;
+    outline: none;
+    color: var(--color-texto);
+    background-color: var(--color-secundario);
+}
+
+.barra-busqueda input::placeholder {
+    color: var(--color-gris);
+    font-size: 12px;
+}
+
+.barra-busqueda button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.icono-busqueda {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Ajusta el color del ícono según la paleta */
+}
+
+
 /* --------------------------- Responsividad --------------------------- */
 @media (max-width: 768px) {
     .productos-container {
@@ -296,5 +601,9 @@ footer {
 
     .modal-contenido {
         width: 95%;
+    }
+    .modal-login-contenido {
+        width: 95%;
+        padding: 20px;
     }
 }

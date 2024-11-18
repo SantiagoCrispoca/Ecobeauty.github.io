@@ -2,7 +2,7 @@
 let productosEnCarrito = []; // Array para almacenar los productos en el carrito
 // Variables para almacenar los datos de usuario
 let usuario = {};
-
+let usuarioActual = ''; // Variable para determinar si es "comprador" o "vendedor"
 
 
 // Función para mostrar u ocultar productos según la categoría seleccionada
@@ -280,14 +280,16 @@ function procesarPago() {
     cerrarVentanaCarrito();
 }
 
-function abrirModalLogin() {
-    document.getElementById("modal-login").classList.remove("oculto");
+function abrirModalLogin(tipoUsuario) {
+    usuarioActual = tipoUsuario; // Establecer si es comprador o vendedor
+    const modalLogin = document.getElementById('modal-login');
+    modalLogin.classList.remove('oculto'); // Mostrar el modal
 }
 
 // Función para cerrar el modal
 function cerrarModalLogin() {
     const modalLogin = document.getElementById('modal-login');
-    modalLogin.classList.add('oculto');
+    modalLogin.classList.add('oculto'); // Ocultar el modal
 }
 
 
@@ -317,22 +319,29 @@ function registrarUsuario(event) {
 }
 
 function crearCuenta() {
-    // Obtener el nombre completo ingresado por el usuario
-    const nombreCompleto = document.getElementById('nombre').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const contrasena = document.getElementById('contrasena').value.trim();
 
-    // Validar que el campo no esté vacío
-    if (nombreCompleto.trim() === "") {
-        alert("Por favor ingresa tu nombre completo.");
+    // Validar campos
+    if (!nombre || !correo || !contrasena) {
+        alert('Por favor, completa todos los campos antes de continuar.');
         return;
     }
 
-    // Cambiar el texto del título en la página principal
-    const tituloPagina = document.getElementById('titulo-pagina');
-    tituloPagina.textContent = `Bienvenido ${nombreCompleto}`;
+    console.log(`Nombre: ${nombre}, Correo: ${correo}, Contraseña: ${contrasena}`);
+    console.log(`Usuario Actual: ${usuarioActual}`);  // Verificar si 'usuarioActual' tiene el valor correcto
 
-    // Cerrar el modal de login
-    cerrarModalLogin();
+    // Verificar el tipo de usuario
+    if (usuarioActual === 'comprador') {
+        alert(`¡Bienvenido, ${nombre}! Continuarás como comprador.`);
+        cerrarModalLogin(); // Permanecer en index.html
+    } else if (usuarioActual === 'vendedor') {
+        alert(`¡Bienvenido, ${nombre}! Serás redirigido a tu perfil de vendedor.`);
+        window.location.href = 'vendedor.html'; // Redirigir a vendedor.html
+    }
 }
+
 
 // Función que copia los elementos del carrito al modal de la pasarela de pagos
 // Función para abrir el modal de la pasarela de pagos y mostrar los productos del carrito
@@ -383,6 +392,60 @@ function cerrarVentanaPago() {
 const botonPagar = document.getElementById('boton-pagar');
 botonPagar.addEventListener('click', abrirVentanaPago);
 
+// Función para filtrar productos en tiempo real
+function filtrarProductos() {
+    const input = document.getElementById('buscador').value.toLowerCase();
+    const productos = document.querySelectorAll('.producto');
+
+    productos.forEach(producto => {
+        const nombreElemento = producto.querySelector('p'); // Cambiado para buscar el <p>
+        const nombre = nombreElemento ? nombreElemento.textContent.toLowerCase() : ''; // Verifica si existe
+        if (nombre.includes(input)) {
+            producto.style.display = 'block';
+        } else {
+            producto.style.display = 'none';
+        }
+    });
+}
+
+function realizarBusqueda() {
+    const input = document.getElementById('buscador').value.toLowerCase();
+    const productos = document.querySelectorAll('.producto');
+    let encontrado = false;
+
+    productos.forEach(producto => {
+        const nombreElemento = producto.querySelector('p'); // Cambiado para buscar el <p>
+        const nombre = nombreElemento ? nombreElemento.textContent.toLowerCase() : ''; // Verifica si existe
+        if (nombre.includes(input)) {
+            encontrado = true;
+            producto.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    if (!encontrado) {
+        alert('No se encontraron productos con ese nombre.');
+    }
+}
+
+
+// Función para manejar la búsqueda al hacer clic en el botón
+function realizarBusqueda() {
+    const input = document.getElementById('buscador').value.toLowerCase();
+    const productos = document.querySelectorAll('.producto');
+    let encontrado = false;
+
+    productos.forEach(producto => {
+        const nombre = producto.querySelector('.nombre-producto').textContent.toLowerCase();
+        if (nombre.includes(input)) {
+            encontrado = true;
+            producto.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    if (!encontrado) {
+        alert('No se encontraron productos con ese nombre.');
+    }
+}
 
 
 
@@ -436,6 +499,61 @@ document.addEventListener('DOMContentLoaded', () => {
             contenedorProductos.appendChild(productoDiv);
         }
     }
+
+    const form = document.getElementById("form-agregar-producto");
+    const contenedorProductos = document.querySelector(".productos-contenedor");
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Evitar el envío del formulario
+
+        // Capturar los datos del formulario
+        const nombre = document.getElementById("nombre-producto").value;
+        const precio = parseFloat(document.getElementById("precio-producto").value).toFixed(2);
+        const imagen = document.getElementById("imagen-producto").files[0];
+        const detalles = document.getElementById("detalles-producto").value;
+
+        if (imagen) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                // Crear nuevo producto
+                const productoDiv = document.createElement("div");
+                productoDiv.classList.add("producto");
+
+                productoDiv.innerHTML = `
+                    <img src="${e.target.result}" alt="${nombre}">
+                    <h3>${nombre}</h3>
+                    <p>Precio: $${precio}</p>
+                    <p>${detalles}</p>
+                `;
+
+                // Añadir el producto al contenedor
+                contenedorProductos.appendChild(productoDiv);
+
+                // Limpiar el formulario
+                form.reset();
+            };
+            reader.readAsDataURL(imagen);
+        } else {
+            alert("Por favor, selecciona una imagen.");
+        }
+    });
+
+    const perfilVendedor = document.querySelector('.btn-perfil-vendedor'); // Botón "Perfil Vendedor"
+    const modalLogin = document.getElementById('modal-login'); // Modal de inicio de sesión
+    const cerrarModal = document.querySelector('.cerrar'); // Botón de cerrar modal
+
+    // Interceptar clic en "Perfil Vendedor"
+    perfilVendedor.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevenir redirección inmediata
+        modalLogin.classList.remove('oculto'); // Mostrar el modal
+    });
+
+    // Cerrar el modal
+    cerrarModal.addEventListener('click', () => {
+        modalLogin.classList.add('oculto'); // Ocultar el modal
+    });
+    
+    
 });
 
 

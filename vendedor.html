@@ -150,6 +150,30 @@
             </div>
         </div>
 
+        <div class="formulario-nuevo-producto">
+            <h2>Agregar Nuevo Producto</h2>
+            <form id="form-agregar-producto">
+                <label for="nombre-producto">Nombre del producto:</label>
+                <input type="text" id="nombre-producto" placeholder="Nombre del producto" required>
+                
+                <label for="precio-producto">Precio:</label>
+                <input type="number" id="precio-producto" placeholder="Precio en USD" min="0" step="0.01" required>
+                
+                <label for="imagen-producto">Imagen:</label>
+                <input type="file" id="imagen-producto" accept="image/*" required>
+                
+                <label for="detalles-producto">Detalles:</label>
+                <textarea id="detalles-producto" placeholder="Escribe los detalles del producto" required></textarea>
+                
+                <button type="submit" class="btn-agregar-producto">Agregar Producto</button>
+            </form>
+        </div>
+        
+        <div id="productos-nuevos" class="productos-nuevos">
+            <div class="productos-contenedor"></div>
+        </div>
+        
+
     <script src="js/main.js" defer></script>
 </body>
 </html>
